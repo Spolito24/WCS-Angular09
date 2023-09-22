@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  Validators,
+  NgModel,
+} from '@angular/forms';
+import { Kitten } from '../model/Kitten';
 
 @Component({
   selector: 'app-create-kitten',
@@ -7,18 +13,12 @@ import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./create-kitten.component.css'],
 })
 export class CreateKittenComponent implements OnInit {
-  kittenForm = this.fb.group({
-    name: ['', [Validators.required]],
-    dateOfBirth: ['', [Validators.required]],
-    image: ['', [Validators.required]],
-  });
+  kitten: Kitten = new Kitten('', new Date(), '');
 
-  constructor(private fb: FormBuilder) {}
+  constructor() {}
 
-  onSubmit() {
-    if (this.kittenForm.value.name !== '') {
-      alert('new cat named ' + this.kittenForm.value.name + ' added');
-    }
+  onSubmit(): void {
+    alert(this.kitten);
   }
 
   ngOnInit(): void {}

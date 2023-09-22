@@ -1,35 +1,40 @@
 <div class="mx-5 mt-4 px-5">
   <h3 class="text-center text-primary">Add Kitten</h3>
-  <form (ngSubmit)="kittenForm.valid && onSubmit()" [formGroup]="kittenForm" #myForm="ngForm">
-    <div class="mt-3">
+
+  <form #kittenForm="ngForm" (ngSubmit)="kittenForm.valid && onSubmit()">
+    <div class="mt-4">
       <label for="name" class="form-label">Kitten Name</label>
-      <input name="name" type="text" formControlName="name" class="form-control" [(ngModel)]="kittenForm">
-    </div>
-    <div *ngIf="kittenForm.controls.name.errors">
-      <span *ngIf="kittenForm.controls.name.errors?.['required']">the kitten should have a name </span>
-      <span *ngIf="kittenForm.controls.name.errors?.['minLength']">the kitten name should be at least 3 character </span>
-      <span *ngIf="kittenForm.controls.name.errors?.['maxLength']">the kitten name must not exceed 30 character</span>
+      <input name="name" type="text" class="form-control" [(ngModel)]="kitten.name" #name="ngModel" required>
+
+      <div *ngIf="name.errors">
+        <span *ngIf="name.errors?.['required']" class="text-danger">Kitten name is required</span>
+      </div>
     </div>
 
-    <div class="mt-3">
-      <label for="dateOfBirth" class="form-label">Kitten Age</label>
-      <input name="dateOfBirth" type="date" formControlName="dateOfBirth" class="form-control" [(ngModel)]="dateOfBirth">
-    </div>
-    <div *ngIf="kittenForm.controls.dateOfBirth.errors">
-      <span *ngIf="kittenForm.controls.dateOfBirth.errors?.['required']">you should choice the kitten date of birth</span>
+    <div class="mt-4">
+      <label for="dateOfBirth" class="form-label">Kitten date of birth</label>
+      <input name="dateOfBirth" type="date" class="form-control" [(ngModel)]="kitten.dateOfBirth" required>
+
+      <div *ngIf="name.errors">
+        <span *ngIf="name.errors?.['required']" class="text-danger">Kitten date of birth is required</span>
+      </div>
     </div>
 
-    <div class="mt-3">
-      <label for="image" class="form-label">Kitten images</label>
-      <input name="image" type="url" formControlName="image" class="form-control">
-    </div>
-    <div *ngIf="kittenForm.controls.image.errors">
-      <span *ngIf="kittenForm.controls.image.errors?.['required']">you should add an image of the kitten</span>
+    <div class="mt-4">
+      <label for="image" class="form-label">Kitten image</label>
+      <input name="image" type="text" class="form-control" [(ngModel)]="kitten.image" required>
+
+      <div *ngIf="name.errors">
+        <span *ngIf="name.errors?.['required']" class="text-danger">Kitten image is required</span>
+      </div>
     </div>
 
-    <button *ngIf="kittenForm.valid" type="submit" class="btn btn-success my-3">add a Kitten</button>
-    <button *ngIf="kittenForm.invalid" class="btn btn-danger my-3">invalid information</button>
-  </form>
+    <div class="d-flex justify-content-center mt-2">
+      <button *ngIf="kittenForm.invalid" type="submit" class="btn btn-danger">Form invalid</button>
+      <button *ngIf="kittenForm.valid" type="submit" class="btn btn-success">Add a kitten</button>
+    </div>
+
+    </form>
 </div>
 <hr class="border border-primary border-3 opacity-100">
 
@@ -39,8 +44,7 @@
         <app-user-kitten></app-user-kitten>
       </div>
       <div class="col-10 col-md-9 col-xl-10 px-0">
-        <app-list-kitten
-          [name]="kittenForm.value.name">
+        <app-list-kitten>
         </app-list-kitten>
       </div>
   </div>
