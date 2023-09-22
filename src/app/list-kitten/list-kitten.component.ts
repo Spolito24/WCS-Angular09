@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Kitten } from '../model/Kitten';
 
 @Component({
   selector: 'app-list-kitten',
@@ -10,10 +11,13 @@ export class ListKittenComponent implements OnInit {
   name: string = '';
 
   @Input()
-  dateOfBirth: string = '';
+  dateOfBirth: Date = new Date();
 
   @Input()
   image: string = '';
+
+  @Input()
+  kittenList: Kitten[] = [];
 
   constructor() {}
 

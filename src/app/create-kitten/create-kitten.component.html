@@ -13,19 +13,19 @@
 
     <div class="mt-4">
       <label for="dateOfBirth" class="form-label">Kitten date of birth</label>
-      <input name="dateOfBirth" type="date" class="form-control" [(ngModel)]="kitten.dateOfBirth" required>
+      <input name="dateOfBirth" type="date" class="form-control" [(ngModel)]="kitten.dateOfBirth" #dateOfBirth="ngModel" required>
 
-      <div *ngIf="name.errors">
-        <span *ngIf="name.errors?.['required']" class="text-danger">Kitten date of birth is required</span>
+      <div *ngIf="dateOfBirth.errors">
+        <span *ngIf="dateOfBirth.errors?.['required']" class="text-danger">Kitten date of birth is required</span>
       </div>
     </div>
 
     <div class="mt-4">
       <label for="image" class="form-label">Kitten image</label>
-      <input name="image" type="text" class="form-control" [(ngModel)]="kitten.image" required>
+      <input name="image" type="string" class="form-control" [(ngModel)]="kitten.image" #image="ngModel" required>
 
-      <div *ngIf="name.errors">
-        <span *ngIf="name.errors?.['required']" class="text-danger">Kitten image is required</span>
+      <div *ngIf="image.errors">
+        <span *ngIf="image.errors?.['required']" class="text-danger">Kitten image is required</span>
       </div>
     </div>
 
@@ -40,12 +40,16 @@
 
 <div class="container-fluid mb-5">
   <div class="row">
+    <div class="col-10 col-md-9 col-xl-10 px-0">
+      <app-list-kitten
+      [name]="kitten.name"
+      [dateOfBirth]="kitten.dateOfBirth"
+      [image]="kitten.image"
+      [kittenList]="kittenList">
+      </app-list-kitten>
+    </div>
       <div class="col-2 col-md-3 col-xl-2 px-0 px-2">
         <app-user-kitten></app-user-kitten>
-      </div>
-      <div class="col-10 col-md-9 col-xl-10 px-0">
-        <app-list-kitten>
-        </app-list-kitten>
       </div>
   </div>
 </div>

@@ -14,11 +14,13 @@ import { Kitten } from '../model/Kitten';
 })
 export class CreateKittenComponent implements OnInit {
   kitten: Kitten = new Kitten('', new Date(), '');
+  kittenList: Kitten[] = [];
 
   constructor() {}
 
   onSubmit(): void {
-    alert(this.kitten);
+    console.log(this.kitten);
+    this.kittenList.push(this.kitten);
   }
 
   ngOnInit(): void {}
