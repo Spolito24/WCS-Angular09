@@ -13,7 +13,7 @@ import { Kitten } from '../model/Kitten';
   styleUrls: ['./create-kitten.component.css'],
 })
 export class CreateKittenComponent implements OnInit {
-  kitten: Kitten = new Kitten('', new Date(), '');
+  kitten: Kitten = new Kitten('', new Date(), '', false);
   kittenList: Kitten[] = [];
   userKittenList: Kitten[] = [];
 

@@ -16,6 +16,7 @@ export class ListKittenComponent implements OnInit {
   isHidden: boolean = true;
 
   adoptKitten(kitten: Kitten): void {
+    kitten.isAdopted = true;
     this.sendKittenUserList.emit(kitten);
   }
 
