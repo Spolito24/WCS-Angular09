@@ -2,7 +2,7 @@
     <h2 class="text-center text-primary">Kitten List</h2>
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
       <div *ngFor="let newkitten of kittenList">
-        <div *ngIf="!newkitten.isAdopted" class="col">
+        <div *ngIf="!newkitten.isAdopted">
           <div class="card shadow-sm">
             <img src="{{newkitten.image}}" alt="{{newkitten.name}} picture"  (mouseenter)="isHidden = !isHidden" (mouseleave)="isHidden = !isHidden">
             <div class="card-body">
@@ -14,9 +14,9 @@
                 <button (click)="adoptKitten(newkitten)" type="button" class="btn btn-sm btn-outline-success">Adopt kitten</button>
               </div>
             </div>
+            </div>
           </div>
         </div>
-      </div>
     </div>
     <button (click)="showKittenList()" type="button" class="btn btn-outline-primary">Button</button>
 

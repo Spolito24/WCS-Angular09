@@ -24,9 +24,10 @@ export class CreateKittenComponent implements OnInit {
 
   constructor() {}
 
-  onSubmit(): void {
-    console.log(this.kitten);
-    this.kittenList.push(this.kitten);
+  onSubmit(kitten: Kitten): void {
+    this.kittenList.push(
+      new Kitten(kitten.name, kitten.dateOfBirth, kitten.image)
+    );
   }
 
   ngOnInit(): void {}
