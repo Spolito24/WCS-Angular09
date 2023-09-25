@@ -1,4 +1,6 @@
   <h3 class="text-center text-primary">User kitten</h3>
   <ul class="list-group">
-    <li class="list-group-item">An item</li>
+    <li *ngFor="let userKitten of userKittenList" class="list-group-item">
+      <img src="{{userKitten.image}}" alt="{{userKitten.name}}" width="100%" >
+    </li>
   </ul>

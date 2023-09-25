@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Kitten } from '../model/Kitten';
 
 @Component({
@@ -8,18 +8,22 @@ import { Kitten } from '../model/Kitten';
 })
 export class ListKittenComponent implements OnInit {
   @Input()
-  name: string = '';
-
-  @Input()
-  dateOfBirth: Date = new Date();
-
-  @Input()
-  image: string = '';
-
-  @Input()
   kittenList: Kitten[] = [];
 
+  @Output()
+  sendKittenUserList: EventEmitter<Kitten> = new EventEmitter();
+
+  isHidden: boolean = true;
+
+  adoptKitten(kitten: Kitten): void {
+    this.sendKittenUserList.emit(kitten);
+  }
+
   constructor() {}
+
+  showKittenList(): void {
+    console.log(this.kittenList);
+  }
 
   ngOnInit() {}
 }

@@ -42,14 +42,12 @@
   <div class="row">
     <div class="col-10 col-md-9 col-xl-10 px-0">
       <app-list-kitten
-      [name]="kitten.name"
-      [dateOfBirth]="kitten.dateOfBirth"
-      [image]="kitten.image"
-      [kittenList]="kittenList">
+      [kittenList]="kittenList" (sendKittenUserList)="receiveNewUserKitten($event)">
       </app-list-kitten>
     </div>
       <div class="col-2 col-md-3 col-xl-2 px-0 px-2">
-        <app-user-kitten></app-user-kitten>
+        <app-user-kitten [userKittenList]="userKittenList">
+        </app-user-kitten>
       </div>
   </div>
 </div>

@@ -1,17 +1,21 @@
   <div class="container">
     <h2 class="text-center text-primary">Kitten List</h2>
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-      <div *ngFor="let kitten of kittenList" class="col">
+      <div *ngFor="let newkitten of kittenList" class="col">
         <div class="card shadow-sm">
-            <img src="{{image}}" alt="cat" >
+            <img src="{{newkitten.image}}" alt="{{newkitten.name}} picture"  (mouseenter)="isHidden = !isHidden" (mouseleave)="isHidden = !isHidden">
           <div class="card-body">
+            <div *ngIf="!isHidden">
+              <p>Kitten Name: {{newkitten.name}}</p>
+              <p>Kitten Date of Birth: {{newkitten.dateOfBirth | date:'shortDate' }}</p>
+            </div>
               <div class="btn-group d-flex justify-content-center align-items-center">
-                <p>Kitten Name: {{name}}</p>
-                <p>Kitten Date of Birth: {{dateOfBirth | date:'shortDate' }}</p>
-                <button type="button" class="btn btn-sm btn-outline-success">Adopt kitten</button>
+                <button (click)="adoptKitten(newkitten)" type="button" class="btn btn-sm btn-outline-success">Adopt kitten</button>
               </div>
           </div>
         </div>
       </div>
     </div>
+    <button (click)="showKittenList()" type="button" class="btn btn-outline-primary">Button</button>
+
   </div>

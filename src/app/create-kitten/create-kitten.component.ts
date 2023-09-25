@@ -15,6 +15,12 @@ import { Kitten } from '../model/Kitten';
 export class CreateKittenComponent implements OnInit {
   kitten: Kitten = new Kitten('', new Date(), '');
   kittenList: Kitten[] = [];
+  userKittenList: Kitten[] = [];
+
+  receiveNewUserKitten(event: Kitten): void {
+    this.userKittenList.push(event);
+    console.log(this.userKittenList);
+  }
 
   constructor() {}
 
